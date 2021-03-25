@@ -6,7 +6,7 @@ LIB_DIR ?= $(PROJECT_HOME_DIR)
 LIB_TEST_DIR = $(LIB_DIR)/testing
 LIB_TESTS_DIR = $(LIB_TEST_DIR)/tests
 
-PROJECT_NAME ?= embedded_common
+PROJECT_NAME ?= common_code
 COMPONENT_NAME ?= $(PROJECT_NAME)
 
 OUTPUT_DIR ?= $(PROJECT_HOME_DIR)/testing
@@ -80,7 +80,8 @@ endif
 ifeq ($(BUILD_LIB_SOURCE), Y)
 LIB_SRC_DIRS = \
    $(LIB_DIR)/action \
-   $(LIB_DIR)/algorithms
+   $(LIB_DIR)/algorithms \
+   $(LIB_DIR)/datastructures/linkedlists \
 
 SRC_DIRS += $(LIB_SRC_DIRS)
 
@@ -92,6 +93,7 @@ endif
 ifeq ($(RUN_LIB_TESTS), Y)
 TEST_SRC_DIRS += \
 	$(LIB_DIR)/action \
+	$(LIB_DIR)/datastructures/linkedlists \
 	$(EXAMPLE_SRC_DIRS)
 endif
 
@@ -99,6 +101,7 @@ endif
 ifeq ($(BUILD_LIB_SOURCE), Y)
 TEST_SRC_DIRS += \
 	$(LIB_TESTS_DIR)/action \
+	$(LIB_TESTS_DIR)/datastructures/linkedlists \
 	$(LIB_TEST_DIR)/utilities
 endif
 
