@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><templates><template autoinsert="true" context="org.eclipse.cdt.ui.text.templates.c" deleted="false" description="C Header File" enabled="true" name="cheader">/*!&#13;
+ * @file&#13;
+ * @brief ${description}&#13;
+ *&#13;
+ * Copyright KissMyAss - Confidential - No rights reserved.&#13;
+ */&#13;
+&#13;
+#ifndef ${include_guard}&#13;
+#define ${include_guard}&#13;
+&#13;
+#endif&#13;
+</template><template autoinsert="true" context="org.eclipse.cdt.ui.text.templates.c" deleted="false" description="C Source File" enabled="true" name="csource">/*!&#13;
+ * @file&#13;
+ * @brief ${description}&#13;
+ *&#13;
+ * Copyright KissMyAss - Confidential - No rights reserved.&#13;
+ */&#13;
+</template><template autoinsert="true" context="org.eclipse.cdt.ui.text.templates.c" deleted="false" description="" enabled="true" name="module">typedef struct
+{
+   struct
+   {
+
+   } _private;
+} ${file_base}_t;
+
+void ${file_base}_Init(${file_base}_t *instance);</template><template autoinsert="true" context="org.eclipse.cdt.ui.text.templates.c" deleted="false" description="Object-oriented C interface boilerplate code" enabled="true" name="oocinterface">struct i_${name}_api_t;
+
+typedef struct
+{
+   const struct i_${name}_api_t *api;
+} i_${name}_t;
+
+typedef struct i_${name}_api_t
+{
+
+} i_${name}_api_t;
+</template><template autoinsert="true" context="org.eclipse.cdt.ui.text.templates.c" deleted="false" description="Test harness boilerplate" enabled="true" name="test_harness">extern "C"
+{
+#include "${module}.h"
+}
+
+#include "CppUTest/TestHarness.h"
+#include "CppUTestExt/MockSupport.h"
+#include "uassert_test.h"
+
+TEST_GROUP(${module})
+{
+   void setup()
+   {
+   }
+
+   void teardown()
+   {
+   }
+};
+
+TEST(${module}, DummyTest)
+{
+
+}</template><template autoinsert="true" context="org.eclipse.cdt.ui.text.templates.c" deleted="false" description="reinterpret" enabled="true" name="rpt">REINTERPRET(instance, _instance, ${file_base}_t *);</template></templates>
