@@ -23,7 +23,7 @@ TEST_GROUP(event_subscription)
    static void mock_callback(void *context, const void *args)
    {
       mock()
-         .actualCall("MockCallback")
+         .actualCall("mock_callback")
          .withParameter("context", context)
          .withParameter("args", args);
    }

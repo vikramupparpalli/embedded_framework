@@ -82,6 +82,7 @@ LIB_SRC_DIRS = \
    $(LIB_DIR)/action \
    $(LIB_DIR)/algorithms \
    $(LIB_DIR)/datastructures/linkedlists \
+   $(LIB_DIR)/events \
 
 SRC_DIRS += $(LIB_SRC_DIRS)
 
@@ -94,6 +95,7 @@ ifeq ($(RUN_LIB_TESTS), Y)
 TEST_SRC_DIRS += \
 	$(LIB_DIR)/action \
 	$(LIB_DIR)/datastructures/linkedlists \
+	$(LIB_DIR)/events \
 	$(EXAMPLE_SRC_DIRS)
 endif
 
@@ -102,6 +104,7 @@ ifeq ($(BUILD_LIB_SOURCE), Y)
 TEST_SRC_DIRS += \
 	$(LIB_TESTS_DIR)/action \
 	$(LIB_TESTS_DIR)/datastructures/linkedlists \
+	$(LIB_TESTS_DIR)/events \
 	$(LIB_TEST_DIR)/utilities
 endif
 
