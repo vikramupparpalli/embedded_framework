@@ -8,7 +8,7 @@
 #ifndef I_INTERRUPT_H
 #define I_INTERRUPT_H
 
-#include "i_event.h"
+#include "../../../../events/interfaces/i_event.h"
 
 typedef i_event_t i_interrupt_t;
 typedef i_event_api_t i_interrupt_api_t;
