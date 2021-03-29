@@ -2,7 +2,9 @@
  * @file
  * @brief description
  *
+ * Copyright KissMyAss - Confidential - No rights reserved.
  */
+
 
 #include <stddef.h>
 #include <stdbool.h>
@@ -11,41 +13,57 @@
 
 void linked_list_init(linked_list_t *list)
 {
-   list->_private.head = NULL;
+   uassert(list);
+
+   list->head = NULL;
 }
 
 size_t linked_list_count(const linked_list_t *list)
 {
-   linked_list_node_t *current = list->_private.head;
    size_t count = 0;
+   linked_list_node_t *current;
+
+   uassert(list);
+
+   current = list->head;
 
    while(current)
    {
-      current = current->_private.next;
+      current = current->next;
       count++;
    }
 
    return count;
 }
 
-linked_list_node_t *linked_list_at(const linked_list_t *list, const size_t index)
+linked_list_node_t * linked_list_at(const linked_list_t *list, const size_t index)
 {
-   linked_list_node_t *current = list->_private.head;
+   size_t i;
+   linked_list_node_t *current;
+
+   uassert(list);
+
+   current = list->head;
    uassert(current);
 
-   for(size_t i = 0; i < index; i++)
+   for(i = 0; i < index; i++)
    {
-      current = current->_private.next;
+      current = current->next;
       uassert(current);
    }
 
    return current;
 }
 
-size_t linked_list_indexOf(const linked_list_t *list, const linked_list_node_t *node)
+size_t linked_list_index_of(const linked_list_t *list, const linked_list_node_t *node)
 {
-   linked_list_node_t *current = list->_private.head;
+   linked_list_node_t *current;
    size_t index = 0;
+
+   uassert(list);
+   uassert(node);
+
+   current = list->head;
 
    while(current)
    {
@@ -54,7 +72,7 @@ size_t linked_list_indexOf(const linked_list_t *list, const linked_list_node_t *
          return index;
       }
 
-      current = current->_private.next;
+      current = current->next;
       index++;
    }
 
@@ -64,7 +82,12 @@ size_t linked_list_indexOf(const linked_list_t *list, const linked_list_node_t *
 
 bool linked_list_contains(const linked_list_t *list, const linked_list_node_t *node)
 {
-   linked_list_node_t *current = list->_private.head;
+   linked_list_node_t *current;
+
+   uassert(list);
+   uassert(node);
+
+   current = list->head;
 
    if(current == node)
    {
@@ -73,7 +96,7 @@ bool linked_list_contains(const linked_list_t *list, const linked_list_node_t *n
 
    while(current)
    {
-      current = (current->_private.next);
+      current = (current->next);
 
       if(current == node)
       {
@@ -84,149 +107,178 @@ bool linked_list_contains(const linked_list_t *list, const linked_list_node_t *n
    return false;
 }
 
-void linked_list_pushFront(linked_list_t *list, linked_list_node_t *node)
+void linked_list_push_front(linked_list_t *list, linked_list_node_t *node)
 {
+   uassert(list);
+   uassert(node);
    uassert(!linked_list_contains(list, node));
 
-   node->_private.next = list->_private.head;
-   list->_private.head = node;
+   node->next = list->head;
+   list->head = node;
 }
 
-void linked_list_pushBack(linked_list_t *list, linked_list_node_t *node)
+void linked_list_push_back(linked_list_t *list, linked_list_node_t *node)
 {
+   linked_list_node_t *current;
+
+   uassert(list);
+   uassert(node);
    uassert(!linked_list_contains(list, node));
 
-   linked_list_node_t *current = list->_private.head;
+   current = list->head;
 
-   node->_private.next = NULL;
+   node->next = NULL;
 
    if(current)
    {
-      while(current->_private.next)
+      while(current->next)
       {
-         current = current->_private.next;
+         current = current->next;
       }
 
-      current->_private.next = node;
+      current->next = node;
    }
    else
    {
-      list->_private.head = node;
+      list->head = node;
    }
 }
 
 void linked_list_insert(linked_list_t *list, linked_list_node_t *node, size_t index)
 {
+   uassert(list);
+   uassert(node);
    uassert(!linked_list_contains(list, node));
 
    if(index > 0)
    {
       linked_list_node_t *before = linked_list_at(list, index - 1);
-      node->_private.next = before->_private.next;
-      before->_private.next = node;
+      node->next = before->next;
+      before->next = node;
    }
    else
    {
-      linked_list_pushFront(list, node);
+      linked_list_push_front(list, node);
    }
 }
 
-linked_list_node_t *linked_list_popFront(linked_list_t *list)
+linked_list_node_t * linked_list_pop_front(linked_list_t *list)
 {
-   uassert(list->_private.head);
+   linked_list_node_t *popped;
 
-   linked_list_node_t *popped = list->_private.head;
-   list->_private.head = list->_private.head->_private.next;
+   uassert(list);
+   uassert(list->head);
+
+   popped = list->head;
+   list->head = list->head->next;
 
    return popped;
 }
 
-linked_list_node_t *linked_list_popBack(linked_list_t *list)
+linked_list_node_t * linked_list_pop_back(linked_list_t *list)
 {
-   uassert(list->_private.head);
-
    linked_list_node_t *popped;
-   linked_list_node_t *current = list->_private.head;
+   linked_list_node_t *current;
 
-   if(current->_private.next)
+   uassert(list);
+   uassert(list->head);
+
+   current = list->head;
+
+   if(current->next)
    {
-      while(current->_private.next->_private.next)
+      while(current->next->next)
       {
-         current = current->_private.next;
+         current = current->next;
       }
 
-      popped = current->_private.next;
-      current->_private.next = NULL;
+      popped = current->next;
+      current->next = NULL;
    }
    else
    {
-      popped = list->_private.head;
-      list->_private.head = NULL;
+      popped = list->head;
+      list->head = NULL;
    }
 
    return popped;
 }
 
-void linked_list_removeAt(linked_list_t *list, const size_t index)
+void linked_list_remove_at(linked_list_t *list, const size_t index)
 {
+   size_t i;
    linked_list_node_t *previous = NULL;
-   linked_list_node_t *current = list->_private.head;
+   linked_list_node_t *current;
 
-   for(size_t i = 0; i < index; i++)
+   uassert(list);
+
+   current = list->head;
+
+   for(i = 0; i < index; i++)
    {
       uassert(current);
       previous = current;
-      current = current->_private.next;
+      current = current->next;
    }
 
    uassert(current);
 
    if(previous)
    {
-      previous->_private.next = current->_private.next;
+      previous->next = current->next;
    }
    else
    {
-      list->_private.head = current->_private.next;
+      list->head = current->next;
    }
 }
 
 void linked_list_remove(linked_list_t *list, linked_list_node_t *node)
 {
-   if(list->_private.head == node)
+   uassert(list);
+   uassert(node);
+
+   if(list->head == node)
    {
-      list->_private.head = node->_private.next;
+      list->head = node->next;
    }
    else
    {
-      linked_list_node_t *current = list->_private.head;
+      linked_list_node_t *current = list->head;
 
       while(current)
       {
-         if(current->_private.next == node)
+         if(current->next == node)
          {
-            current->_private.next = node->_private.next;
+            current->next = node->next;
             break;
          }
 
-         current = current->_private.next;
+         current = current->next;
       }
    }
 }
 
-void linked_list_iterator_init(linked_list_iterator_t *instance, linked_list_t *list)
+void linked_list_for_each(const linked_list_t *list, linked_list_for_each_call_t each, void *context)
 {
-   instance->_private.current = list->_private.head;
-}
+   linked_list_node_t *current;
+   size_t index = 0;
 
-linked_list_node_t *linked_list_iterator_next(linked_list_iterator_t *instance)
-{
-   if(!instance->_private.current)
+   uassert(list);
+   uassert(each);
+
+   current = list->head;
+
+   while(current)
    {
-      return NULL;
-   }
+      linked_list_node_t *next = current->next;
 
-   linked_list_node_t *item = instance->_private.current;
-   instance->_private.current = instance->_private.current->_private.next;
-   return item;
+      if(!each(current, context, index))
+      {
+         break;
+      }
+
+      current = next;
+      index++;
+   }
 }

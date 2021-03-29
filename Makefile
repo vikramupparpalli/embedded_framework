@@ -83,6 +83,7 @@ LIB_SRC_DIRS = \
    $(LIB_DIR)/algorithms \
    $(LIB_DIR)/datastructures/linkedlists \
    $(LIB_DIR)/events \
+   $(LIB_DIR)/events/interfaces \
 
 SRC_DIRS += $(LIB_SRC_DIRS)
 
