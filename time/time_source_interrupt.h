@@ -13,13 +13,13 @@ typedef struct
       timesource_tick_count_t tickCount;
       event_subscription_t interruptEventSubscription;
    } _private;
-} TimeSource_Interrupt_t;
+} timesource_interrupt_t;
 
 /*!
  * Initialize an interrupt-driven time source.  The time source tick count will be zero after init.
  * @param instance The time source.
  * @param interrupt The interrupt to use as the 'tick'.
  */
-void TimeSource_Interrupt_Init(TimeSource_Interrupt_t *instance, i_interrupt_t *interrupt);
+void timesource_interrupt_init(timesource_interrupt_t *instance, i_interrupt_t *interrupt);
 
 #endif

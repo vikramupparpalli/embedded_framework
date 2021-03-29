@@ -5,7 +5,7 @@
 
 static timesource_tick_count_t GetTicks(i_timesource_t *_instance)
 {
-   REINTERPRET(instance, _instance, TimeSource_Interrupt_t *);
+   REINTERPRET(instance, _instance, timesource_interrupt_t *);
 
    timesource_tick_count_t last;
    timesource_tick_count_t current;
@@ -32,12 +32,12 @@ static const i_timesource_api_t api =
 
 static void InterruptCallback(void *_instance, const void *args)
 {
-   REINTERPRET(instance, _instance, TimeSource_Interrupt_t *);
+   REINTERPRET(instance, _instance, timesource_interrupt_t *);
    IGNORE_ARG(args);
    instance->_private.tickCount++;
 }
 
-void TimeSource_Interrupt_Init(TimeSource_Interrupt_t *instance, i_interrupt_t *interrupt)
+void timesource_interrupt_init(timesource_interrupt_t *instance, i_interrupt_t *interrupt)
 {
    instance->interface.api = &api;
    instance->_private.tickCount = 0;
