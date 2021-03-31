@@ -23,7 +23,7 @@
    } _private;
 } ${file_base}_t;
 
-void ${file_base}_Init(${file_base}_t *instance);</template><template autoinsert="true" context="org.eclipse.cdt.ui.text.templates.c" deleted="false" description="Object-oriented C interface boilerplate code" enabled="true" name="oocinterface">struct i_${name}_api_t;
+void ${file_base}_init(${file_base}_t *instance);</template><template autoinsert="true" context="org.eclipse.cdt.ui.text.templates.c" deleted="false" description="Object-oriented C interface boilerplate code" enabled="true" name="oocinterface">struct i_${name}_api_t;
 
 typedef struct
 {
