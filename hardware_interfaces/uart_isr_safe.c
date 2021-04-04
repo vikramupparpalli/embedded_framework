@@ -1,9 +1,8 @@
 /*!
  * @file
- * @brief Implementation of an ISR-safe UART wrapper.  Uses a ring buffer queue received bytes and
- * then consumes from the queue in the background.
+ * @brief description
  *
- * Copyright GE Appliances - Confidential - All rights reserved
+ * Copyright KissMyAss - Confidential - No rights reserved.
  */
 
 #include "uart_isr_safe.h"

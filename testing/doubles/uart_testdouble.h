@@ -1,10 +1,3 @@
-/*!
- * @file
- * @brief Test double for the UART interface.
- *
- * Copyright GE Appliances - Confidential - All rights reserved
- */
-
 #ifndef UART_TESTDOUBLE_H
 #define UART_TESTDOUBLE_H
 

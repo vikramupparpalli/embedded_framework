@@ -1,9 +1,10 @@
 /*!
  * @file
- * @brief Tests for ringbuffer.
+ * @brief description
  *
- * Copyright GE Appliances - Confidential - All rights reserved
+ * Copyright KissMyAss - Confidential - No rights reserved.
  */
+
 
 extern "C"
 {
