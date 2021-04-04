@@ -82,8 +82,10 @@ LIB_SRC_DIRS = \
    $(LIB_DIR)/action \
    $(LIB_DIR)/algorithms \
    $(LIB_DIR)/datastructures/linkedlists \
+   $(LIB_DIR)/datastructures/ringbuffer \
    $(LIB_DIR)/events \
    $(LIB_DIR)/events/interfaces \
+   $(LIB_DIR)/hardware_interfaces \
    $(LIB_DIR)/usercom \
 
 SRC_DIRS += $(LIB_SRC_DIRS)
@@ -97,7 +99,9 @@ ifeq ($(RUN_LIB_TESTS), Y)
 TEST_SRC_DIRS += \
 	$(LIB_DIR)/action \
 	$(LIB_DIR)/datastructures/linkedlists \
+	$(LIB_DIR)/datastructures/ringbuffer \
 	$(LIB_DIR)/events \
+	$(LIB_DIR)/hardware_interfaces \
 	$(LIB_DIR)/usercom \
 	$(EXAMPLE_SRC_DIRS)
 endif
@@ -107,7 +111,10 @@ ifeq ($(BUILD_LIB_SOURCE), Y)
 TEST_SRC_DIRS += \
 	$(LIB_TESTS_DIR)/action \
 	$(LIB_TESTS_DIR)/datastructures/linkedlists \
+	$(LIB_TESTS_DIR)/datastructures/ringbuffer \
+	$(LIB_TEST_DIR)/doubles \
 	$(LIB_TESTS_DIR)/events \
+	$(LIB_TESTS_DIR)/hardware_interfaces \
 	$(LIB_TESTS_DIR)/usercom \
 	$(LIB_TEST_DIR)/utilities
 endif
