@@ -84,6 +84,7 @@ LIB_SRC_DIRS = \
    $(LIB_DIR)/datastructures/linkedlists \
    $(LIB_DIR)/events \
    $(LIB_DIR)/events/interfaces \
+   $(LIB_DIR)/usercom \
 
 SRC_DIRS += $(LIB_SRC_DIRS)
 
@@ -97,6 +98,7 @@ TEST_SRC_DIRS += \
 	$(LIB_DIR)/action \
 	$(LIB_DIR)/datastructures/linkedlists \
 	$(LIB_DIR)/events \
+	$(LIB_DIR)/usercom \
 	$(EXAMPLE_SRC_DIRS)
 endif
 
@@ -106,6 +108,7 @@ TEST_SRC_DIRS += \
 	$(LIB_TESTS_DIR)/action \
 	$(LIB_TESTS_DIR)/datastructures/linkedlists \
 	$(LIB_TESTS_DIR)/events \
+	$(LIB_TESTS_DIR)/usercom \
 	$(LIB_TEST_DIR)/utilities
 endif
 

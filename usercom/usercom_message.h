@@ -20,9 +20,9 @@ typedef struct
    } _private;
 } usercom_message_t;
 
-#define USERCOM_MESSAGE_MAXPAYLOAD (usercom_PACKET_MAXPAYLOAD - 1)
+#define USERCOM_MESSAGE_MAXPAYLOAD (USERCOM_PACKET_MAXPAYLOAD - 1)
 
-#define USERCOM_MESSAGE_OVERHEAD (usercom_PACKET_OVERHEAD + 1)
+#define USERCOM_MESSAGE_OVERHEAD (USERCOM_PACKET_OVERHEAD + 1)
 
 #define STACK_ALLOC_USERCOM_MESSAGE(_name, _payloadLength) \
    uint8_t MACRO_SAFE_CONCATENATE(_name, Storage)[_payloadLength + USERCOM_MESSAGE_OVERHEAD] = {0, _payloadLength + 1}; \
