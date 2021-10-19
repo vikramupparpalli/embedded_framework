@@ -1,10 +1,8 @@
-## Embedded Software Development
+## Getting Started
+ Do the following
 
-This has the common code modules intended to be used in any embedded software development.
+ `git clone --recursive https://github.com/vikramupparpalli/embedded_systems_framework`
+ `cd embedded_systems_framework`
+ `make clean all`
 
-1. Action Module
-2. Numerical Algorithms
-3. Data Structures
-4. Hardware Interfaces
-5. PSoC Modules
-6. Designing DataModel
+Start adding your code and the tests for that
